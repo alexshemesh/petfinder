@@ -1,6 +1,12 @@
 #!/usr/bin/python
 # coding: utf-8
 from flask import Flask
+import os
+import sys
+from pathlib import Path
+project_dir = os.path.dirname(os.path.abspath(__file__))
+parent_path = os.path.abspath(os.path.join(project_dir, os.pardir))
+sys.path.append(parent_path)
 
 
 from flask import  request, jsonify, render_template, redirect
