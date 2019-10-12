@@ -1,0 +1,47 @@
+<!-- /templates/backend.html  -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+ <form method="POST" id="target">
+    <div class="form-group">
+        <input type="text" class="form-control" name="tags" value="{{ context.filter }}" placeholder="Desc">
+    </div>
+     <button type="submit" class="btn btn-block btn-primary">Filter</button>
+ </form>
+
+ <table class="table" id="pet_records">
+        <div class="table-responsive">
+            <table class="table" id="flights">
+                <thead>
+                    <tr>
+                        <th scope="col">name</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">type</th>
+                        <th scope="col">color</th>
+                        <th scope="col">tags</th>
+                        <th scope="col">desc</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for pet in context.petrecords %}
+                    <tr id={{ pet.id }}>
+                        <th scope="row">{{ pet.name }}</th>
+                        <th> {{ pet.phone }}</th>
+                        <td> {{ pet.type }} </td>
+                        <td> {{ pet.color }} </td>
+                        <td> {{ pet.tags }} </td>
+                        <td> {{ pet.desc }} </td>
+                        <td> <a href="/petrecords/del/{{ pet.id }}">Delete</a> </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+ </table>
+<br/>
+<td> <a href="/petrecords/add">Add new record...</a> </td>
+{% endblock %}
